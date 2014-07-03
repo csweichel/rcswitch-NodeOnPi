@@ -16,8 +16,7 @@ Like C++ version of rcswitch, [WiringPi must be installed](https://projects.drog
 ```javascript
 var rcswitch = require('rcswitch');
 
-sw = new rcswitch.RCSwitch(); // Create a new instance of RCSwitch
-sw.enableTransmit(0); // Set WiringPi Pin 0 on OUTPUT (see http://wiringpi.com/pins/ for pin numerotation)
-sw.switchOn("10110", 1); // Switch on the first unit of 10110 (code 1.23.) group
-sw.switchOff("11000", 2); // Switch off the second unit of 11000 (code 12...) group
+rcswitch.enableTransmit(0); // Set WiringPi Pin 0 on OUTPUT (see http://wiringpi.com/pins/ for pin numerotation)
+rcswitch.switchOn("10110", 1); // Switch on the first unit of 10110 (code 1.23.) group
+rcswitch.switchOff("11000", 2); // Switch off the second unit of 11000 (code 12...) group
 ```
