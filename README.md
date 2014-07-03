@@ -10,3 +10,14 @@ Successfully tested on Raspbian Wheezy (2014-06-20) up-to-date.
 ## Requirements
 
 Like C++ version of rcswitch, [WiringPi must be installed](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/) in order to compile.
+
+## Usage (non-definitive API)
+
+```javascript
+var rcswitch = require('rcswitch');
+
+sw = new rcswitch.RCSwitch(); // Create a new instance of RCSwitch
+sw.enableTransmit(0); // Set WiringPi Pin 0 on OUTPUT (see http://wiringpi.com/pins/ for pin numerotation)
+sw.switchOn("10110", 1); // Switch on the first unit of 10110 (code 1.23.) group
+sw.switchOff("11000", 2); // Switch off the second unit of 11000 (code 12...) group
+```
