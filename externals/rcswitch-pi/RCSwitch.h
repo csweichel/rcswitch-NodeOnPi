@@ -30,7 +30,7 @@
 #else
     #include <wiringPi.h>
     #include <stdint.h>
-    // #define NULL 0 <- Raise warning, already defined
+
     #define CHANGE 1
 #ifdef __cplusplus
 extern "C"{
@@ -38,8 +38,6 @@ extern "C"{
 typedef uint8_t boolean;
 typedef uint8_t byte;
 
-#if !defined(NULL)
-#endif
 #ifdef __cplusplus
 }
 #endif
