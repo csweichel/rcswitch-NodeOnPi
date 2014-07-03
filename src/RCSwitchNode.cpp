@@ -122,10 +122,10 @@ class RCSwitchNode : node::ObjectWrap {
     }
 
     static v8::Handle<Value> SwitchOn(const Arguments& args) {
-      SwitchOp(args, true);
+      return SwitchOp(args, true);
     }
     static v8::Handle<Value> SwitchOff(const Arguments& args) {
-      SwitchOp(args, false);
+      return SwitchOp(args, false);
     }
 
     // notification.protocol=
