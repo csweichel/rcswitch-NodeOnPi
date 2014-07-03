@@ -1,6 +1,3 @@
-//
-// This class is a native C++ Node.js extension for creating GTK+ desktop notification
-//
 #include <v8.h>
 #include <node.h>
 
@@ -62,6 +59,10 @@ class RCSwitchNode : node::ObjectWrap {
     // var notify = require("../build/default/RCSwitchNode.node"); will bind our constructor function to rcswitch.RCSwitch
     // so that we can call "new rcswitch.RCSwitch();"
     static void Init(Handle<Object> target) {
+      if( wiringPiSetup() == -1 ) {
+        ThrowException( Exception::TypeError( String::New( "GPIO initialization failed" ) ) );
+        return;
+      }
       v8::HandleScope scope;
 
       v8::Local<FunctionTemplate> local_function_template = v8::FunctionTemplate::New(New);
