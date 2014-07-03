@@ -1,6 +1,6 @@
 {
   "name": "rcswitch",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node bindings for the rcswitch RaspberryPi port",
   "main": "build/Release/rcswitch.node",
   "scripts": {
