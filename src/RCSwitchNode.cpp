@@ -7,7 +7,7 @@ using namespace v8;
 
 class RCSwitchNode : node::ObjectWrap {
   private:
-    RCSwitch rcswitch = RCSwitch();
+    RCSwitch rcswitch;
 
     #define switchOp2(p1, p2) { if(switchOn) thiz->rcswitch.switchOn((p1), (p2)); else thiz->rcswitch.switchOff((p1), (p2)); }
     #define switchOp3(p1, p2, p3) { if(switchOn) thiz->rcswitch.switchOn((p1), (p2), (p3)); else thiz->rcswitch.switchOff((p1), (p2), (p3)); }
