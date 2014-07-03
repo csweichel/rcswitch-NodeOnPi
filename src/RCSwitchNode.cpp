@@ -7,8 +7,7 @@ using namespace v8;
 
 class RCSwitchNode : node::ObjectWrap {
   private:
-    RCSwitch rcswitch;
-
+    RCSwitch rcswitch = RCSwitch();
 
     #define switchOp2(p1, p2) { if(switchOn) thiz->rcswitch.switchOn((p1), (p2)); else thiz->rcswitch.switchOff((p1), (p2)); }
     #define switchOp3(p1, p2, p3) { if(switchOn) thiz->rcswitch.switchOn((p1), (p2), (p3)); else thiz->rcswitch.switchOff((p1), (p2), (p3)); }
@@ -56,8 +55,6 @@ class RCSwitchNode : node::ObjectWrap {
     
     static v8::Persistent<FunctionTemplate> persistent_function_template;
 
-    // var notify = require("../build/default/RCSwitchNode.node"); will bind our constructor function to rcswitch.RCSwitch
-    // so that we can call "new rcswitch.RCSwitch();"
     static void Init(Handle<Object> target) {
       if( wiringPiSetup() == -1 ) {
         ThrowException( Exception::TypeError( String::New( "GPIO initialization failed" ) ) );
