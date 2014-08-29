@@ -40,7 +40,7 @@ Return true.
 
 ### rcswitch.switchOn(`group`, `switch`)
 
-Switch a remote switch on (Type A with 10 pole DIP switches)
+Switch a remote switch on (Type A with 10 pole DIP switches).
 
 * `group` - (String) code of the switch group (refers to DIP switches 1..5 where "1" = on and "0" = off, if all DIP switches are on it's "11111")
 * `switch` - (Number) switch (1..4)
@@ -49,7 +49,7 @@ Return true.
 
 ### rcswitch.switchOf(`group`, `switch`)
 
-Switch a remote switch off (Type A with 10 pole DIP switches)
+Switch a remote switch off (Type A with 10 pole DIP switches).
 
 * `group` - (String) code of the switch group (refers to DIP switches 1..5 where "1" = on and "0" = off, if all DIP switches are on it's "11111")
 * `switch` - (Number) switch (1..4)
@@ -76,7 +76,7 @@ Return true.
 
 ### rcswitch.switchOn(`family`, `group`, `switch`)
 
-Switch a remote switch on (Type C Intertechno)
+Switch a remote switch on (Type C Intertechno).
 
 * `family` - (String) familycode (a..f)
 * `group` - (Number) group (1..4)
@@ -86,7 +86,7 @@ Return true.
 
 ### rcswitch.switchOff(`family`, `group`, `switch`)
 
-Switch a remote switch off (Type C Intertechno)
+Switch a remote switch off (Type C Intertechno).
 
 * `family` - (String) familycode (a..f)
 * `group` - (Number) group (1..4)
@@ -96,7 +96,7 @@ Return true.
 
 ### rcswitch.send(`codeWord`)
 
-Send raw codeword
+Send raw codeword.
 
 * `codeword` - (String) codeword
 
