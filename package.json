@@ -1,11 +1,10 @@
 {
   "name": "rcswitch",
-  "version": "0.0.5",
-  "description": "Node bindings for the rcswitch RaspberryPi port",
+  "version": "0.1.0",
+  "description": "Control your wireless power outlet sockets with RCSwitch for the Raspberry Pi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node-gyp rebuild"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,7 +15,10 @@
     "raspberrypi",
     "rcswitch",
     "433",
-    "rf"
+    "rf",
+    "wireless",
+    "power",
+    "outlet"
   ],
   "author": "Marvin Roger <bonjourmarvin@marvinroger.fr> (http://www.marvinroger.fr/)",
   "gypfile": true,
