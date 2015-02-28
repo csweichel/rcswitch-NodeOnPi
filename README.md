@@ -25,7 +25,9 @@ rcswitch.switchOff("11000", 2); // Switch off the second unit of 11000 (code 12x
 
 ## API
 
-### rcswitch.enableTransmit(`pin`)
+### Configuration
+
+#### rcswitch.enableTransmit(`pin`)
 
 Enable transmission on the given pin (make it an OUTPUT). Must be called before any other functions.
 
@@ -33,13 +35,17 @@ Enable transmission on the given pin (make it an OUTPUT). Must be called before 
 
 Return true if `pin` is an integer, false otherwise.
 
-### rcswitch.disableTransmit()
+#### rcswitch.disableTransmit()
 
 Disable transmission (set the pin to -1 which disable any following function call).
 
 Return true.
 
-### rcswitch.switchOn(`group`, `switch`)
+### Type A
+
+![Type A](http://gladysproject.com/img/IMG_0628_2.jpg)
+
+#### rcswitch.switchOn(`group`, `switch`)
 
 Switch a remote switch on (Type A with 10 pole DIP switches).
 
@@ -48,7 +54,7 @@ Switch a remote switch on (Type A with 10 pole DIP switches).
 
 Return true.
 
-### rcswitch.switchOff(`group`, `switch`)
+#### rcswitch.switchOff(`group`, `switch`)
 
 Switch a remote switch off (Type A with 10 pole DIP switches).
 
@@ -57,7 +63,13 @@ Switch a remote switch off (Type A with 10 pole DIP switches).
 
 Return true.
 
-### rcswitch.switchOn(`group`, `switch`)
+### Type B
+
+![Type B](http://i9.instantgallery.de/s/su/sui/b0d5c19446819.png)
+
+(don't care about the mySwitch, here only for reference)
+
+#### rcswitch.switchOn(`group`, `switch`)
 
 Switch a remote switch on (Type B with two rotary/sliding switches).
 
@@ -66,7 +78,7 @@ Switch a remote switch on (Type B with two rotary/sliding switches).
 
 Return true.
 
-### rcswitch.switchOff(`group`, `switch`)
+#### rcswitch.switchOff(`group`, `switch`)
 
 Switch a remote switch off (Type B with two rotary/sliding switches).
 
@@ -75,7 +87,9 @@ Switch a remote switch off (Type B with two rotary/sliding switches).
 
 Return true.
 
-### rcswitch.switchOn(`family`, `group`, `switch`)
+### Type C
+
+#### rcswitch.switchOn(`family`, `group`, `switch`)
 
 Switch a remote switch on (Type C Intertechno).
 
@@ -85,7 +99,7 @@ Switch a remote switch on (Type C Intertechno).
 
 Return true.
 
-### rcswitch.switchOff(`family`, `group`, `switch`)
+#### rcswitch.switchOff(`family`, `group`, `switch`)
 
 Switch a remote switch off (Type C Intertechno).
 
@@ -95,7 +109,9 @@ Switch a remote switch off (Type C Intertechno).
 
 Return true.
 
-### rcswitch.send(`codeWord`)
+### Other
+
+#### rcswitch.send(`codeWord`)
 
 Send raw codeword.
 
