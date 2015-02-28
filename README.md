@@ -5,7 +5,7 @@ node-rcswitch
 
 Node bindings for the [rcswitch RaspberryPi port](https://github.com/r10r/rcswitch-pi).
 
-Successfully tested on Raspbian Wheezy (2014-06-20) up-to-date.
+Successfully tested on Raspbian Wheezy up-to-date as of 2015-02-28.
 
 ## Requirements
 
