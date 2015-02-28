@@ -57,7 +57,7 @@ class RCSwitchNode : node::ObjectWrap {
 
     static void Init(Handle<Object> target) {
       if( wiringPiSetup() == -1 ) {
-        ThrowException( Exception::TypeError( String::New( "GPIO initialization failed" ) ) );
+        ThrowException( Exception::TypeError( String::New( "rcswitch: GPIO initialization failed" ) ) );
         return;
       }
       v8::HandleScope scope;
