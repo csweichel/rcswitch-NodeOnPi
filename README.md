@@ -16,7 +16,7 @@ Successfully tested on Raspbian Wheezy up-to-date as of 2015-02-28.
 ## Usage
 
 ```javascript
-var rcswitch = require('rcswitch'); // Might throw an error if wiring pi init failed (no root)
+var rcswitch = require('rcswitch'); // Might throw an error if wiring pi init failed, or exit process if no root (must work on that)
 
 rcswitch.enableTransmit(0); // Use data Pin 0
 rcswitch.switchOn("10110", 1); // Switch on the first unit of 10110 (code 1x23x) group
