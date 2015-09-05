@@ -45,7 +45,7 @@ void RCSwitchNode::SwitchOp(const Nan::FunctionCallbackInfo<v8::Value>& info, bo
       switchOp2(group->Int32Value(), swtch->Int32Value());
       info.GetReturnValue().Set(true);
     } else if(group->IsString() && swtch->IsInt32()) {
-      v8::String::AsciiValue sGroup(group);
+      Nan::Utf8String sGroup(group);
 
       if(sGroup.length() >= 5) {
         switchOp2(*sGroup, swtch->Int32Value());
@@ -58,7 +58,7 @@ void RCSwitchNode::SwitchOp(const Nan::FunctionCallbackInfo<v8::Value>& info, bo
     v8::Handle<v8::Value> devce = info[2];
 
     if(famly->IsString() && group->IsInt32() && devce->IsInt32()) {
-      v8::String::AsciiValue v8str(famly);
+      Nan::Utf8String v8str(famly);
 
       if(v8str.length() > 0) {
         switchOp3(*(*v8str), group->Int32Value(), devce->Int32Value());
@@ -88,7 +88,7 @@ void RCSwitchNode::Send(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
   RCSwitchNode* obj = ObjectWrap::Unwrap<RCSwitchNode>(info.Holder());
 
-  v8::String::Utf8Value v8str(info[0]);
+  Nan::Utf8String v8str(info[0]);
   obj->rcswitch.send(*v8str);
 
   info.GetReturnValue().Set(true);
@@ -136,5 +136,5 @@ void RCSwitchNode::SetProtocol(v8::Local<v8::String> property, v8::Local<v8::Val
 // notification.protocol
 void RCSwitchNode::GetProtocol(v8::Local<v8::String> property, const Nan::PropertyCallbackInfo<v8::Value>& info) {
   RCSwitchNode* obj = ObjectWrap::Unwrap<RCSwitchNode>(info.Holder());
-  info.GetReturnValue().Set(v8::Uint32::New(obj->rcswitch.getReceivedProtocol()));
+  info.GetReturnValue().Set(Nan::New<v8::Uint32>(obj->rcswitch.getReceivedProtocol()));
 }
