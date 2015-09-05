@@ -20,6 +20,9 @@
     "power",
     "outlet"
   ],
+  "engines": {
+    "node" : ">=0.8"
+  },
   "author": "Marvin Roger <bonjourmarvin@marvinroger.fr> (http://www.marvinroger.fr/)",
   "gypfile": true,
   "bugs": {
