@@ -1,3 +1,3 @@
-var addon = require('bindings')('rcswitch');
+var rcswitch = require('bindings')('rcswitch');
 
 module.exports = new rcswitch.RCSwitch();
