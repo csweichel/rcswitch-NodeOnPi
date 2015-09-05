@@ -2,11 +2,11 @@
 
 Nan::Persistent<v8::Function> RCSwitchNode::constructor;
 
-static void Init(v8::Local<v8::Object> exports) {
+void RCSwitchNode::Init(v8::Local<v8::Object> exports) {
   Nan::HandleScope scope;
 
   if( wiringPiSetup() == -1 ) {
-    ThrowException( Exception::TypeError( String::New( "rcswitch: GPIO initialization failed" ) ) );
+    Nan::ThrowTypeError("rcswitch: GPIO initialization failed");
     return;
   }
 
@@ -15,7 +15,8 @@ static void Init(v8::Local<v8::Object> exports) {
   tpl->SetClassName(Nan::New("RCSwitch").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1); // 1 since this is a constructor function
 
-  Nan::SetAccessor(tpl->InstanceTemplate(), Nan::New("protocol").ToLocalChecked(), GetProtocol, SetProtocol);
+  Nan::SetAccessor(tpl->InstanceTemplate(), Nan::New("protocol").ToLocalChecked(), GetProtocol); //, SetProtocol); TODO <- Error at compile-time... ?
+  Nan::SetPrototypeMethod(tpl, "send", Send);
 
   // Prototype
   Nan::SetPrototypeMethod(tpl, "send", Send);
@@ -28,8 +29,8 @@ static void Init(v8::Local<v8::Object> exports) {
   exports->Set(Nan::New("RCSwitch").ToLocalChecked(), tpl->GetFunction());
 }
 
-RCSwitchNode() { }
-~RCSwitchNode() {}
+ RCSwitchNode::RCSwitchNode() {}
+ RCSwitchNode::~RCSwitchNode() {}
 
 void RCSwitchNode::SwitchOp(const Nan::FunctionCallbackInfo<v8::Value>& info, bool switchOn) {
   Nan::HandleScope scope;
@@ -51,7 +52,7 @@ void RCSwitchNode::SwitchOp(const Nan::FunctionCallbackInfo<v8::Value>& info, bo
         info.GetReturnValue().Set(true);
       }
     }
-  } else if(args.Length() == 3) {
+  } else if(info.Length() == 3) {
     v8::Handle<v8::Value> famly = info[0];
     v8::Handle<v8::Value> group = info[1];
     v8::Handle<v8::Value> devce = info[2];
@@ -66,13 +67,11 @@ void RCSwitchNode::SwitchOp(const Nan::FunctionCallbackInfo<v8::Value>& info, bo
     }
   }
 }
-   
-
 
 void RCSwitchNode::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info.IsConstructCall()) {
     // Invoked as constructor: `new MyObject(...)`
-    MyObject* obj = new RCSwitchNode(value);
+    RCSwitchNode* obj = new RCSwitchNode();
     obj->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
   } else {
@@ -119,11 +118,11 @@ void RCSwitchNode::DisableTransmit(const Nan::FunctionCallbackInfo<v8::Value>& i
 }
 
 void RCSwitchNode::SwitchOn(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  info.GetReturnValue().Set(SwitchOp(info, true));
+  SwitchOp(info, true);
 }
 
 void RCSwitchNode::SwitchOff(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  info.GetReturnValue().Set(SwitchOp(info, false));
+  SwitchOp(info, false);
 }
 
 // notification.protocol=
@@ -137,5 +136,5 @@ void RCSwitchNode::SetProtocol(v8::Local<v8::String> property, v8::Local<v8::Val
 // notification.protocol
 void RCSwitchNode::GetProtocol(v8::Local<v8::String> property, const Nan::PropertyCallbackInfo<v8::Value>& info) {
   RCSwitchNode* obj = ObjectWrap::Unwrap<RCSwitchNode>(info.Holder());
-  info.GetReturnValue().Set(v8::Uint32::New(object->rcswitch.getReceivedProtocol()));
+  info.GetReturnValue().Set(v8::Uint32::New(obj->rcswitch.getReceivedProtocol()));
 }
