@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/marvinroger/node-rcswitch/issues"
   },
-  "homepage": "https://github.com/marvinroger/node-rcswitch"
+  "homepage": "https://github.com/marvinroger/node-rcswitch",
+  "dependencies": {
+    "nan": "^2.0.8"
+  }
 }
