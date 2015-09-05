@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/marvinroger/node-rcswitch",
   "dependencies": {
+    "bindings": "^1.2.1",
     "nan": "^2.0.8"
   }
 }

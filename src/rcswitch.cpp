@@ -5,4 +5,4 @@ void InitAll(v8::Local<v8::Object> exports) {
   RCSwitchNode::Init(exports);
 }
 
-NODE_MODULE(addon, InitAll)
+NODE_MODULE(rcswitch, InitAll)
